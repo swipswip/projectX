@@ -5,7 +5,7 @@ screen = pygame.display.set_mode((1000, 1000))
 clock = pygame.time.Clock()
 
 pikasize = 305;
-pika_IMG = pygame.image.load("c:\pygames\practice\pikapika.png")
+pika_IMG = pygame.image.load("pikapika.png")
 pika = pika_IMG.get_rect()
 pika.centerx = 500
 pika.centery = 500
@@ -26,7 +26,7 @@ while True:
         elif event.key == pygame.K_DOWN:
             pika.top += 5
     
-    
+    #수정 완료
     screen.blit(pika_IMG, pika)
     pygame.display.update()
     clock.tick(30)
