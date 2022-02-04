@@ -1,19 +1,37 @@
 import pygame
 
 pygame.init()
-screen = pygame.display.set_mode((1000, 1000))
+screen = pygame.display.set_mode()
+surf = pygame.display.get_surface()
+sx = surf.get_width()
+sy = surf.get_height()
+jump = 70 #점프력
+ga = 10 # 중력가속도
+g = 0 #점프 여부 판별
+jumps = 0
 clock = pygame.time.Clock()
 
 
-pikasize = 305
-pika_IMG = pygame.image.load("pikapika.png")
+pikawidth = 300
+pikaheight = 256
+
+
+pika_IMG = ["", "", "", "", "", "", "", "", "", "", ""]
+pika_IMG[0] = pygame.image.load("Asset\Sprites\Main_Character\player\idle\player_idle_0.png")
+
+for i in range(1, 10):
+    pika_IMG[i] = pygame.image.load("Asset\Sprites\Main_Character\player\run\player_run_0" + str(i - 1) + ".png")
+    
 nyaon_IMG = pygame.image.load("nya.png")
-pika = pika_IMG.get_rect()
+
+pika = pika_IMG[0].get_rect()
 nya = nyaon_IMG.get_rect()
-pika.centerx = 500
-pika.centery = 500
+pika.top = sy - pika.height
+pika.left = 0
 nya.centerx = 900
 nya.centery = 900
+pis = 0;
+
 while True:
     screen.fill((0, 0, 0))
     
@@ -23,19 +41,31 @@ while True:
         break
     key_event = pygame.key.get_pressed()
     if key_event[pygame.K_LEFT]:
-        pika.left -= 5
-    elif key_event[pygame.K_RIGHT]:
-        pika.left += 5
-    elif key_event[pygame.K_UP]:
-        pika.top -= 5
-    elif key_event[pygame.K_DOWN]:
-        pika.top += 5
+        pika.left -= 10
+        pika = (pika + 1) % 11
+    if key_event[pygame.K_RIGHT]:
+        pika.left += 10
+        pika = (pika + 1) % 11
+    if key_event[pygame.K_UP] and g < 1:
+        g = 1 #중력 시스템 ON
+        jumps = jump
+    if event.type == pygame.KEYUP and g < 1:
+        pika = 0
         
     if (pika.top < nya.bottom and nya.top < pika.bottom and pika.left < nya.right and nya.left < pika.right):
-        break;
+        break
+    
+    if g > 0:
+        pika.top = pika.top - jumps
+        jumps = jumps - ga
+        if pika.top + pika.height >= sy:
+            g = 0
+            pika.top = sy - pika.height
+    
     
     #수정 완료
-    screen.blit(pika_IMG, pika)
+    
+    screen.blit(pika_IMG[pika], pika)
     screen.blit(nyaon_IMG, nya)
     pygame.display.update()
     clock.tick(30)
