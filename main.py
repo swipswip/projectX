@@ -15,15 +15,23 @@ clock = pygame.time.Clock()
 pikawidth = 300
 pikaheight = 256
 
-pika_IMG = pygame.image.load("Asset\Sprites\Main_Character\player\idle\player_idle_0.png")
+
+pika_IMG = ["", "", "", "", "", "", "", "", "", "", ""]
+pika_IMG[0] = pygame.image.load("Asset\Sprites\Main_Character\player\idle\player_idle_0.png")
+
+for i in range(1, 10):
+    pika_IMG[i] = pygame.image.load("Asset\Sprites\Main_Character\player\run\player_run_0" + str(i - 1) + ".png")
+    
 nyaon_IMG = pygame.image.load("nya.png")
 
-pika = pika_IMG.get_rect()
+pika = pika_IMG[0].get_rect()
 nya = nyaon_IMG.get_rect()
 pika.top = sy - pika.height
 pika.left = 0
 nya.centerx = 900
 nya.centery = 900
+pis = 0;
+
 while True:
     screen.fill((0, 0, 0))
     
@@ -34,11 +42,15 @@ while True:
     key_event = pygame.key.get_pressed()
     if key_event[pygame.K_LEFT]:
         pika.left -= 10
+        pika = (pika + 1) % 11
     if key_event[pygame.K_RIGHT]:
         pika.left += 10
+        pika = (pika + 1) % 11
     if key_event[pygame.K_UP] and g < 1:
         g = 1 #중력 시스템 ON
         jumps = jump
+    if event.type == pygame.KEYUP and g < 1:
+        pika = 0
         
     if (pika.top < nya.bottom and nya.top < pika.bottom and pika.left < nya.right and nya.left < pika.right):
         break
@@ -52,7 +64,8 @@ while True:
     
     
     #수정 완료
-    screen.blit(pika_IMG, pika)
+    
+    screen.blit(pika_IMG[pika], pika)
     screen.blit(nyaon_IMG, nya)
     pygame.display.update()
     clock.tick(30)
