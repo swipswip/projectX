@@ -35,14 +35,10 @@ for i in range(0, 5):
     cave[i] = bg_IMG[i].get_rect()
     cave[i].left = 0
     
-#nyaon_IMG = pygame.image.load("nya.png")
 
 pika = pika_IMG[0].get_rect()
-#nya = nyaon_IMG.get_rect()
 pika.top = sy - pika.height
 pika.left = sx / 2 - pika.width / 2
-#nya.centerx = 900
-#nya.centery = 900
 pis = 0
 leftfocus = 1
 dd = 0
@@ -95,11 +91,16 @@ while True:
     
     for i in range(0, 5):
         ii = 4 - i
-        screen.blit(bg_IMG[ii], cave[ii])
-        if (sy.width > cave[ii].left + cave[ii].width):
+        if (sx > cave[ii].left + cave[ii].width):
             screen.blit(bg_IMG[ii], pygame.Rect(cave[ii].left + cave[ii].width, cave[ii].top, cave[ii].left + cave[ii].width + cave[ii].width, cave[ii].height))
-        elif (sy.left < cave[ii].left):
+            if (cave[ii].left + cave[ii].width <= 0):
+                cave[ii].left = 0
+        elif (0 <= cave[ii].left):
             screen.blit(bg_IMG[ii], pygame.Rect(cave[ii].left - cave[ii].width, cave[ii].top, cave[ii].left, cave[ii].height))
+            if (cave[ii].left + cave[ii].width >= sx):
+                cave[ii].left = 0 
+                   
+        screen.blit(bg_IMG[ii], cave[ii])
         
     screen.blit(pika_IMG[pis + dd], pika)
     
