@@ -99,8 +99,8 @@ while True:
                 cave[ii].left = 0
         elif (0 <= cave[ii].left):
             screen.blit(bg_IMG[ii], pygame.Rect(cave[ii].left - cave[ii].width, cave[ii].top, cave[ii].left, cave[ii].height))
-            if (cave[ii].left + cave[ii].width >= sx):
-                cave[ii].left = 0 
+            if (cave[ii].left >= sx):
+                cave[ii].left = sx - cave[ii].width
                    
         screen.blit(bg_IMG[ii], cave[ii])
         
