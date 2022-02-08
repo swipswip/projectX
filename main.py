@@ -1,5 +1,6 @@
 import pygame
 import time
+import sys
 
 pygame.init()
 screen = pygame.display.set_mode()
@@ -72,7 +73,8 @@ while True:
     elif key_event[pygame.K_RIGHT]:
         moving(1)
         dd = 0
-        
+    elif key_event[pygame.K_ESCAPE]:
+        sys.exit()
     if key_event[pygame.K_UP] and g < 1:
         g = 1 #중력 시스템 ON
         jumps = jump
@@ -97,8 +99,8 @@ while True:
                 cave[ii].left = 0
         elif (0 <= cave[ii].left):
             screen.blit(bg_IMG[ii], pygame.Rect(cave[ii].left - cave[ii].width, cave[ii].top, cave[ii].left, cave[ii].height))
-            if (cave[ii].left + cave[ii].width >= sx):
-                cave[ii].left = 0 
+            if (cave[ii].left >= sx):
+                cave[ii].left = sx - cave[ii].width
                    
         screen.blit(bg_IMG[ii], cave[ii])
         
@@ -106,6 +108,6 @@ while True:
     
     #screen.blit(nyaon_IMG, nya)
     pygame.display.update()
-    clock.tick(20)
+    clock.tick(60)
     
 pygame.quit()
