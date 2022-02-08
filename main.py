@@ -1,5 +1,6 @@
 import pygame
 import time
+import sys
 
 pygame.init()
 screen = pygame.display.set_mode()
@@ -73,8 +74,7 @@ while True:
         moving(1)
         dd = 0
     elif key_event[pygame.K_ESCAPE]:
-        break
-        
+        sys.exit()
     if key_event[pygame.K_UP] and g < 1:
         g = 1 #중력 시스템 ON
         jumps = jump
