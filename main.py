@@ -11,6 +11,7 @@ jump = 70 #점프력
 ga = 10 # 중력가속도
 g = 0 #점프 여부 판별
 jumps = 0
+bn = 0 #블록 시작 위치
 clock = pygame.time.Clock()
 
 
@@ -36,6 +37,9 @@ for i in range(0, 5):
     cave[i] = bg_IMG[i].get_rect()
     cave[i].left = 0
     
+block_IMG = pygame.image.load("./Asset/Sprites/Tileset/stonefloor.png")
+block = block_IMG.get_rect()
+bc = int(sx / block.width + 1) #해상도에 따라 필요한 바닥의 갯수 결정
 
 pika = pika_IMG[0].get_rect()
 pika.top = sy - pika.height
@@ -45,17 +49,50 @@ leftfocus = 1
 dd = 0
 pikap = 0
 
+
 def moving(d):
-    
-    
-    global leftfocus, pis, pikap
+    global leftfocus, pis, pikap, bn
     #pika.left = pika.left + d * 10
     leftfocus = d
     pis = (pis + 1) % 11
     pikap += d
+    bn += -d * 12
+    if bn <= -(block.width):
+        bn += block.width
+    elif bn >= block.width:
+        bn -= block.width
+        
     for i in range(0, 5):
         ii = 4 - i
-        cave[ii].left += -d * i * 2
+        cave[ii].left += -d * i * 3
+        
+        
+
+def printscreen():
+    for i in range(0, 5):
+        ii = 4 - i
+        if (sx > cave[ii].left + cave[ii].width):
+            screen.blit(bg_IMG[ii], pygame.Rect(cave[ii].left + cave[ii].width, cave[ii].top, cave[ii].left + cave[ii].width + cave[ii].width, cave[ii].height))
+            if (cave[ii].left + cave[ii].width <= 0):
+                cave[ii].left = 0
+        elif (0 <= cave[ii].left):
+            screen.blit(bg_IMG[ii], pygame.Rect(cave[ii].left - cave[ii].width, cave[ii].top, cave[ii].left, cave[ii].height))
+            if (cave[ii].left >= sx):
+                cave[ii].left = sx - cave[ii].width
+                   
+        screen.blit(bg_IMG[ii], cave[ii])
+        
+    screen.blit(pika_IMG[pis + dd], pika)
+    
+def blockmove():
+    global bn
+    bs = bn - block.width
+    bf = bn
+    for i in range(0, bc + 2):
+        screen.blit(block_IMG, pygame.Rect(bs, sy - block.height / 3, bf, block.height))
+        bs = bs + block.width
+        bf = bf + block.width
+
 
 
 
@@ -91,20 +128,8 @@ while True:
     
     #수정 완료
     
-    for i in range(0, 5):
-        ii = 4 - i
-        if (sx > cave[ii].left + cave[ii].width):
-            screen.blit(bg_IMG[ii], pygame.Rect(cave[ii].left + cave[ii].width, cave[ii].top, cave[ii].left + cave[ii].width + cave[ii].width, cave[ii].height))
-            if (cave[ii].left + cave[ii].width <= 0):
-                cave[ii].left = 0
-        elif (0 <= cave[ii].left):
-            screen.blit(bg_IMG[ii], pygame.Rect(cave[ii].left - cave[ii].width, cave[ii].top, cave[ii].left, cave[ii].height))
-            if (cave[ii].left >= sx):
-                cave[ii].left = sx - cave[ii].width
-                   
-        screen.blit(bg_IMG[ii], cave[ii])
-        
-    screen.blit(pika_IMG[pis + dd], pika)
+    printscreen()
+    blockmove()
     
     #screen.blit(nyaon_IMG, nya)
     pygame.display.update()

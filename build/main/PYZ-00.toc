@@ -19,25 +19,9 @@
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.9_3.9.2800.0_x64__qbz5n2kfra8p0\\lib\\__future__.py',
    'PYMODULE'),
-  ('pkg_resources._vendor.packaging._structures',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.9_3.9.2800.0_x64__qbz5n2kfra8p0\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\_structures.py',
-   'PYMODULE'),
   ('pkg_resources._vendor.packaging.specifiers',
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.9_3.9.2800.0_x64__qbz5n2kfra8p0\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\specifiers.py',
-   'PYMODULE'),
-  ('pkg_resources._vendor.packaging.markers',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.9_3.9.2800.0_x64__qbz5n2kfra8p0\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\markers.py',
-   'PYMODULE'),
-  ('pkg_resources._vendor.packaging._typing',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.9_3.9.2800.0_x64__qbz5n2kfra8p0\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\_typing.py',
-   'PYMODULE'),
-  ('pkg_resources._vendor.packaging',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.9_3.9.2800.0_x64__qbz5n2kfra8p0\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\__init__.py',
    'PYMODULE'),
   ('pkg_resources._vendor.packaging.requirements',
    'C:\\Program '
@@ -54,6 +38,50 @@
   ('string',
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.9_3.9.2800.0_x64__qbz5n2kfra8p0\\lib\\string.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging.utils',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.9_3.9.2800.0_x64__qbz5n2kfra8p0\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\utils.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging.__about__',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.9_3.9.2800.0_x64__qbz5n2kfra8p0\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\__about__.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging._structures',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.9_3.9.2800.0_x64__qbz5n2kfra8p0\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\_structures.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging._compat',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.9_3.9.2800.0_x64__qbz5n2kfra8p0\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\_compat.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.9_3.9.2800.0_x64__qbz5n2kfra8p0\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\__init__.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging._typing',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.9_3.9.2800.0_x64__qbz5n2kfra8p0\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\_typing.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.appdirs',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.9_3.9.2800.0_x64__qbz5n2kfra8p0\\lib\\site-packages\\pkg_resources\\_vendor\\appdirs.py',
+   'PYMODULE'),
+  ('ctypes',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.9_3.9.2800.0_x64__qbz5n2kfra8p0\\lib\\ctypes\\__init__.py',
+   'PYMODULE'),
+  ('ctypes._endian',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.9_3.9.2800.0_x64__qbz5n2kfra8p0\\lib\\ctypes\\_endian.py',
+   'PYMODULE'),
+  ('struct',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.9_3.9.2800.0_x64__qbz5n2kfra8p0\\lib\\struct.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging.markers',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.9_3.9.2800.0_x64__qbz5n2kfra8p0\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\markers.py',
    'PYMODULE'),
   ('pkg_resources._vendor',
    'C:\\Program '
@@ -338,14 +366,6 @@
   ('multiprocessing.sharedctypes',
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.9_3.9.2800.0_x64__qbz5n2kfra8p0\\lib\\multiprocessing\\sharedctypes.py',
-   'PYMODULE'),
-  ('ctypes',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.9_3.9.2800.0_x64__qbz5n2kfra8p0\\lib\\ctypes\\__init__.py',
-   'PYMODULE'),
-  ('ctypes._endian',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.9_3.9.2800.0_x64__qbz5n2kfra8p0\\lib\\ctypes\\_endian.py',
    'PYMODULE'),
   ('multiprocessing.pool',
    'C:\\Program '
@@ -655,10 +675,6 @@
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.9_3.9.2800.0_x64__qbz5n2kfra8p0\\lib\\_compat_pickle.py',
    'PYMODULE'),
-  ('struct',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.9_3.9.2800.0_x64__qbz5n2kfra8p0\\lib\\struct.py',
-   'PYMODULE'),
   ('random',
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.9_3.9.2800.0_x64__qbz5n2kfra8p0\\lib\\random.py',
@@ -787,10 +803,6 @@
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.9_3.9.2800.0_x64__qbz5n2kfra8p0\\lib\\copy.py',
    'PYMODULE'),
-  ('pkg_resources._vendor.packaging.__about__',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.9_3.9.2800.0_x64__qbz5n2kfra8p0\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\__about__.py',
-   'PYMODULE'),
   ('pkg_resources._vendor.packaging.tags',
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.9_3.9.2800.0_x64__qbz5n2kfra8p0\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\tags.py',
@@ -858,18 +870,6 @@
   ('distutils.errors',
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.9_3.9.2800.0_x64__qbz5n2kfra8p0\\lib\\distutils\\errors.py',
-   'PYMODULE'),
-  ('pkg_resources._vendor.packaging._compat',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.9_3.9.2800.0_x64__qbz5n2kfra8p0\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\_compat.py',
-   'PYMODULE'),
-  ('pkg_resources._vendor.packaging.utils',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.9_3.9.2800.0_x64__qbz5n2kfra8p0\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\utils.py',
-   'PYMODULE'),
-  ('pkg_resources._vendor.appdirs',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.9_3.9.2800.0_x64__qbz5n2kfra8p0\\lib\\site-packages\\pkg_resources\\_vendor\\appdirs.py',
    'PYMODULE'),
   ('sysconfig',
    'C:\\Program '
@@ -963,17 +963,17 @@
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.9_3.9.2800.0_x64__qbz5n2kfra8p0\\lib\\os.py',
    'PYMODULE'),
-  ('stringprep',
+  ('tracemalloc',
    'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.9_3.9.2800.0_x64__qbz5n2kfra8p0\\lib\\stringprep.py',
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.9_3.9.2800.0_x64__qbz5n2kfra8p0\\lib\\tracemalloc.py',
    'PYMODULE'),
   ('_py_abc',
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.9_3.9.2800.0_x64__qbz5n2kfra8p0\\lib\\_py_abc.py',
    'PYMODULE'),
-  ('tracemalloc',
+  ('stringprep',
    'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.9_3.9.2800.0_x64__qbz5n2kfra8p0\\lib\\tracemalloc.py',
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.9_3.9.2800.0_x64__qbz5n2kfra8p0\\lib\\stringprep.py',
    'PYMODULE'),
   ('pygame',
    'C:\\Users\\실습08\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python39\\site-packages\\pygame\\__init__.py',
