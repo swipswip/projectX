@@ -42,7 +42,7 @@ bc = int(sx / block.width + 1) #해상도에 따라 필요한 바닥의 갯수 �
 
 pika = pika_IMG[0].get_rect()
 pika.top = sy - pika.height
-pika.left = sx / 2 - pika.width / 2
+pika.left = 250
 pis = 0
 leftfocus = 1
 dd = 0
