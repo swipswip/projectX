@@ -1,6 +1,8 @@
 import pygame
 import time
 import sys
+import random
+
 
 pygame.init()
 screen = pygame.display.set_mode()
@@ -21,6 +23,17 @@ pikaheight = 256
 
 pika_IMG = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
 pika_IMG[0] = pygame.image.load("./Asset/Sprites/Main_Character/Player/idle/player_idle_0.png")
+rndblock_IMG = ["" for i in range(129)]
+for i in range(1, 10):
+    rndblock_IMG[i] = pygame.image.load("./Tileset/Tileset2/Tileset2_0" + str(i) + ".png")
+    rndblock_IMG[i] = pygame.transform.scale(rndblock_IMG[i], (64,64)) ##원본은 256*256 .png
+    
+for i in range(10, 128):
+    rndblock_IMG[i] = pygame.image.load("./Tileset/Tileset2/Tileset2_" + str(i) + ".png")
+    rndblock_IMG[i] = pygame.transform.scale(rndblock_IMG[i], (64,64))
+        
+rndblock = rndblock_IMG[1].get_rect()
+##tileset2_01, 02, 03 이런식으로 파일명 되어있어서 나눠놓음
 
 
 for i in range(1, 11):
@@ -35,6 +48,7 @@ bg_IMG = pygame.transform.scale(bg_IMG, (sx, sy))
 cave = bg_IMG.get_rect()
 cave.left = 0
 
+
     
 block_IMG = pygame.image.load("./Asset/Sprites/Tileset/stonefloor.png")
 block = block_IMG.get_rect()
@@ -47,6 +61,9 @@ pis = 0
 leftfocus = 1
 dd = 0
 pikap = 0
+t = 0
+blockpos = 0
+blocknum = 1
 
 
 def moving(d):
@@ -80,7 +97,12 @@ def blockmove():
         bf = bf + block.width
 
 
-
+def blockengage():
+    global t, blockpos, blocknum
+    t = (t + 1) % 200
+    if t == 0:
+        blockpos = random.randrange(1, sy)
+        blocknum = random.randrange(1, 128)
 
 while True:
     screen.fill((0, 0, 0))
@@ -97,8 +119,7 @@ while True:
     if key_event[pygame.K_UP] and g < 1:
         g = 1 #중력 시스템 ON
         jumps = jump
-    #if (pika.top < nya.bottom and nya.top < pika.bottom and pika.left < nya.right and nya.left < pika.right):
-        #break
+        
     
     if g > 0:
         pika.top = pika.top - jumps
@@ -109,10 +130,11 @@ while True:
     
     
     #수정 완료
-    
+    blockengage()
     printscreen()
     blockmove()
     
+    screen.blit(rndblock_IMG[blocknum], pygame.Rect(sx-rndblock.width, blockpos, sx, blockpos + rndblock.height))
     #screen.blit(nyaon_IMG, nya)
     pygame.display.update()
     clock.tick(60)
