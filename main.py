@@ -23,6 +23,7 @@ pikaheight = 256
 
 pika_IMG = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
 pika_IMG[0] = pygame.image.load("./Asset/Sprites/Main_Character/Player/idle/player_idle_0.png")
+
 rndblock_IMG = ["" for i in range(129)]
 for i in range(1, 10):
     rndblock_IMG[i] = pygame.image.load("./Tileset/Tileset2/Tileset2_0" + str(i) + ".png")
@@ -68,7 +69,6 @@ blocknum = 1
 
 def moving(d):
     global leftfocus, pis, pikap, bn
-    #pika.left = pika.left + d * 10
     leftfocus = d
     pis = (pis + 1) % 11
     pikap += d
