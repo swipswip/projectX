@@ -15,10 +15,13 @@ g = 0 #점프 여부 판별
 jumps = 0
 bn = 0 #블록 시작 위치
 clock = pygame.time.Clock()
-
+i = 0
 
 pikawidth = 300
 pikaheight = 256
+
+
+c = [["2","3","4","5","e"], ["8", "1", "1", "1", "1", "7", "/", "2", "3", "3", "4", "4", "5", "e"]]
 
 
 pika_IMG = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
@@ -27,11 +30,11 @@ pika_IMG[0] = pygame.image.load("./Asset/Sprites/Main_Character/Player/idle/play
 rndblock_IMG = ["" for i in range(129)]
 for i in range(1, 10):
     rndblock_IMG[i] = pygame.image.load("./Tileset/Tileset2/Tileset2_0" + str(i) + ".png")
-    rndblock_IMG[i] = pygame.transform.scale(rndblock_IMG[i], (64,64)) ##원본은 256*256 .png
+    rndblock_IMG[i] = pygame.transform.scale(rndblock_IMG[i], (96, 96)) ##원본은 256*256 .png
     
 for i in range(10, 128):
     rndblock_IMG[i] = pygame.image.load("./Tileset/Tileset2/Tileset2_" + str(i) + ".png")
-    rndblock_IMG[i] = pygame.transform.scale(rndblock_IMG[i], (64,64))
+    rndblock_IMG[i] = pygame.transform.scale(rndblock_IMG[i], (96, 96))
         
 rndblock = rndblock_IMG[1].get_rect()
 ##tileset2_01, 02, 03 이런식으로 파일명 되어있어서 나눠놓음
@@ -63,9 +66,8 @@ leftfocus = 1
 dd = 0
 pikap = 0
 t = 0
-blockpos = 0
+blockpos = sx
 blocknum = 1
-
 
 def moving(d):
     global leftfocus, pis, pikap, bn
@@ -98,12 +100,16 @@ def blockmove():
 
 
 def blockengage():
-    global t, blockpos, blocknum
-    t = (t + 1) % 200
-    if t == 0:
-        blockpos = random.randrange(1, sy)
-        blocknum = random.randrange(1, 128)
-
+    global blockpos, blocknum
+    blocknum = blocknum + 1
+    if blocknum % 100 == 0:
+        for i in range(10):
+            blockpos = blockpos - 96
+            if blockpos + 96 * i > sx or c[0][i] == "e":
+                break
+            screen.blit(rndblock_IMG[int(c[0][i])], pygame.Rect(blockpos, sy - block.height / 3 - 96, 96, 96))
+        blocknum = 0
+    
 while True:
     screen.fill((0, 0, 0))
     
@@ -128,13 +134,14 @@ while True:
             g = 0
             pika.top = sy - pika.height
     
-    
+    if blockpos <= 0:
+        blockpos = sx
+        
     #수정 완료
     blockengage()
     printscreen()
     blockmove()
     
-    screen.blit(rndblock_IMG[blocknum], pygame.Rect(sx-rndblock.width, blockpos, sx, blockpos + rndblock.height))
     #screen.blit(nyaon_IMG, nya)
     pygame.display.update()
     clock.tick(60)
