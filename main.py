@@ -5,7 +5,8 @@ import random
 
 
 pygame.init()
-screen = pygame.display.set_mode()
+size = (1200, 535)
+screen = pygame.display.set_mode(size)
 surf = pygame.display.get_surface()
 sx = surf.get_width()
 sy = surf.get_height()
@@ -26,6 +27,8 @@ c = [["2","3","4","5","e"], ["8", "1", "1", "1", "1", "7", "/", "2", "3", "3", "
 
 pika_IMG = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
 pika_IMG[0] = pygame.image.load("./Asset/Sprites/Main_Character/Player/idle/player_idle_0.png")
+bg_IMG = ["", "", "", "", "", ""]
+cave = ["", "", "", "", "", ""]
 
 rndblock_IMG = ["" for i in range(129)]
 for i in range(1, 10):
@@ -47,11 +50,17 @@ for i in range(1, 11):
 for i in range(11, 22):
     pika_IMG[i] = pygame.transform.flip(pika_IMG[i - 11], True, False)
     
-bg_IMG = pygame.image.load("./asset\Sprites/needs/cave_bg.png")
-bg_IMG = pygame.transform.scale(bg_IMG, (sx, sy))
-cave = bg_IMG.get_rect()
-cave.left = 0
+#bg_IMG = pygame.image.load("./asset\Sprites/needs/cave_bg.png")
+#bg_IMG = pygame.transform.scale(bg_IMG, (sx, sy))
+#cave = bg_IMG.get_rect()
+#cave.left = 0
 
+for i in range(0, 5):
+    aaa = "./Asset/Sprites/Cave_Background/bg_cave_" + str(i + 1) + ".png"
+    bg_IMG[i] = pygame.image.load(aaa)
+    bg_IMG[i] = pygame.transform.scale(bg_IMG[i], (2938 / 2, 535))
+    cave[i] = bg_IMG[i].get_rect()
+    cave[i].left = 0
 
     
 block_IMG = pygame.image.load("./Asset/Sprites/Tileset/stonefloor.png")
@@ -59,8 +68,8 @@ block = block_IMG.get_rect()
 bc = int(sx / block.width + 1) #해상도에 따라 필요한 바닥의 갯수 결정
 
 pika = pika_IMG[0].get_rect()
-pika.top = sy - pika.height
-pika.left = 250
+pika.top = sy - 45
+pika.left = 150
 pis = 0
 leftfocus = 1
 dd = 0
@@ -80,12 +89,21 @@ def moving(d):
     elif bn >= block.width:
         bn -= block.width
         
+    for i in range(0, 5):
+        ii = 4 - i
+        cave[ii].left += -d * i * 3        
         
         
 
 def printscreen():
+    for i in range(0, 5):
+        ii = 4 - i
+        if (sx > cave[ii].left + cave[ii].width):
+            screen.blit(bg_IMG[ii], pygame.Rect(cave[ii].left + cave[ii].width, cave[ii].top, cave[ii].left + cave[ii].width + cave[ii].width, cave[ii].height))
+            if (cave[ii].left + cave[ii].width <= 0):
+                cave[ii].left = 0
                    
-    screen.blit(bg_IMG, cave)
+        screen.blit(bg_IMG[ii], cave[ii])
         
     screen.blit(pika_IMG[pis + dd], pika)
     
@@ -126,6 +144,7 @@ while True:
         g = 1 #중력 시스템 ON
         jumps = jump
         
+    
     
     if g > 0:
         pika.top = pika.top - jumps
