@@ -10,7 +10,7 @@ screen = pygame.display.set_mode(size)
 surf = pygame.display.get_surface()
 sx = surf.get_width()
 sy = surf.get_height()
-jump = 70 #점프력
+jump = 50 #점프력
 ga = 10 # 중력가속도
 g = 0 #점프 여부 판별
 jumps = 0
@@ -27,6 +27,7 @@ c = [["2","3","4","5","e"], ["8", "1", "1", "1", "1", "7", "/", "2", "3", "3", "
 
 pika_IMG = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
 pika_IMG[0] = pygame.image.load("./Asset/Sprites/Main_Character/Player/idle/player_idle_0.png")
+pika_IMG[0] = pygame.transform.scale(pika_IMG[0], (250, 210))
 bg_IMG = ["", "", "", "", "", ""]
 cave = ["", "", "", "", "", ""]
 
@@ -46,6 +47,7 @@ rndblock = rndblock_IMG[1].get_rect()
 for i in range(1, 11):
     aaa = "./Asset/Sprites/Main_Character/Player/moving/player_run_0" + str(i - 1) + ".png"
     pika_IMG[i] = pygame.image.load(aaa)
+    pika_IMG[i] = pygame.transform.scale(pika_IMG[i], (250, 210))
     
 for i in range(11, 22):
     pika_IMG[i] = pygame.transform.flip(pika_IMG[i - 11], True, False)
@@ -68,8 +70,8 @@ block = block_IMG.get_rect()
 bc = int(sx / block.width + 1) #해상도에 따라 필요한 바닥의 갯수 결정
 
 pika = pika_IMG[0].get_rect()
-pika.top = sy - 45
-pika.left = 150
+pika.top = sy - pika.height - 10
+pika.left = 125
 pis = 0
 leftfocus = 1
 dd = 0
@@ -151,7 +153,7 @@ while True:
         jumps = jumps - ga
         if pika.top + pika.height >= sy:
             g = 0
-            pika.top = sy - pika.height
+            pika.top = sy - pika.height - 10
     
     if blockpos <= 0:
         blockpos = sx
